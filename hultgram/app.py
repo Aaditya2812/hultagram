@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import os, uuid
 from werkzeug.utils import secure_filename
-from config import Config
-from models import db, Post, Comment
+from hult.config import Config  # Ajustando el path
+from hult.models import db, Post, Comment  # Ajustando el path
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -10,7 +10,7 @@ app.config.from_object(Config)
 db.init_app(app)
 
 with app.app_context():
-    db.create_all()
+    db.create_all()  # <- Verifica que la indentación esté correcta (4 espacios)
 
 # Ensure that the uploads folder exists
 if not os.path.exists(app.config["UPLOAD_FOLDER"]):
